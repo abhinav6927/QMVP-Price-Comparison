@@ -30,10 +30,3 @@ Open the index.html file in your web browser.
 
 That's it! You can now use the application locally.
 
-🤝 Contributing
-Contributions, issues, and feature requests are welcome! Feel free to check the issues page.
-
-Please read our CONTRIBUTING.md for details on our code of conduct and the process for submitting pull requests.
-
-📜 License
-This project is licensed under the MIT License. See the LICENSE file for more details.
