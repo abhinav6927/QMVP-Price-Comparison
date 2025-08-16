@@ -1,0 +1,200 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>QMVP - Compare Prices Across Quick Commerce Platforms</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <!-- Header -->
+    <header class="header">
+        <div class="container">
+            <div class="header-content">
+                <div class="logo">
+                    <h1>🛒 QMVP</h1>
+                </div>
+                <div class="location-selector">
+                    <div class="location-display" id="locationDisplay">
+                        <span class="location-icon">📍</span>
+                        <span class="location-text" id="locationText">Detecting location...</span>
+                        <button class="change-location-btn" id="changeLocationBtn">Change</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </header>
+
+    <!-- Location Modal -->
+    <div class="modal hidden" id="locationModal">
+        <div class="modal-overlay"></div>
+        <div class="modal-content">
+            <div class="modal-header">
+                <h2>Set Your Location</h2>
+                <button class="modal-close" id="closeLocationModal">&times;</button>
+            </div>
+            <div class="modal-body">
+                <div class="form-group">
+                    <label class="form-label" for="locationInput">Enter your area, pincode or city</label>
+                    <input type="text" class="form-control" id="locationInput" placeholder="e.g., Malviya Nagar, Jaipur">
+                </div>
+                <div class="location-options">
+                    <button class="btn btn--outline" id="detectLocationBtn">
+                        📍 Use Current Location
+                    </button>
+                </div>
+            </div>
+            <div class="modal-footer">
+                <button class="btn btn--secondary" id="cancelLocationBtn">Cancel</button>
+                <button class="btn btn--primary" id="saveLocationBtn">Save Location</button>
+            </div>
+        </div>
+    </div>
+
+    <!-- Main Content -->
+    <main class="main-content">
+        <!-- Homepage Section -->
+        <section class="homepage-section" id="homepageSection">
+            <div class="container">
+                <div class="hero-section">
+                    <h2 class="hero-title">Find the Best Deals Across All Quick Commerce Platforms</h2>
+                    <p class="hero-subtitle">Compare prices from Zepto, Blinkit, Instamart, BigBasket, JioMart & more</p>
+                    
+                    <!-- Search Bar -->
+                    <div class="search-container">
+                        <div class="search-box">
+                            <input type="text" class="search-input" id="searchInput" placeholder="Search for products like milk, bread, rice...">
+                            <button class="search-btn" id="searchBtn">🔍</button>
+                        </div>
+                        <div class="search-suggestions hidden" id="searchSuggestions"></div>
+                    </div>
+
+                    <!-- Recent Searches -->
+                    <div class="recent-searches hidden" id="recentSearches">
+                        <h4>Recent Searches</h4>
+                        <div class="recent-searches-list" id="recentSearchesList"></div>
+                    </div>
+                </div>
+
+                <!-- Categories -->
+                <section class="categories-section">
+                    <h3>Shop by Category</h3>
+                    <div class="categories-grid" id="categoriesGrid">
+                        <!-- Categories will be populated by JavaScript -->
+                    </div>
+                </section>
+
+                <!-- Featured Platforms -->
+                <section class="platforms-section">
+                    <h3>Available Platforms</h3>
+                    <div class="platforms-grid" id="platformsGrid">
+                        <!-- Platforms will be populated by JavaScript -->
+                    </div>
+                </section>
+            </div>
+        </section>
+
+        <!-- Search Results Section -->
+        <section class="search-results-section hidden" id="searchResultsSection">
+            <div class="container">
+                <div class="search-results-header">
+                    <div class="results-info">
+                        <h2 id="searchQuery">Search Results</h2>
+                        <p id="resultsCount">0 products found</p>
+                    </div>
+                    <button class="btn btn--outline back-to-home" id="backToHomeBtn">← Back to Home</button>
+                </div>
+
+                <!-- Filters & Sort -->
+                <div class="filters-container">
+                    <div class="filter-group">
+                        <label for="sortSelect" class="form-label">Sort by:</label>
+                        <select id="sortSelect" class="form-control">
+                            <option value="price-low">Price: Low to High</option>
+                            <option value="price-high">Price: High to Low</option>
+                            <option value="delivery-time">Fastest Delivery</option>
+                            <option value="availability">Available First</option>
+                        </select>
+                    </div>
+                    <div class="filter-group">
+                        <label for="platformFilter" class="form-label">Platform:</label>
+                        <select id="platformFilter" class="form-control">
+                            <option value="all">All Platforms</option>
+                            <!-- Options populated by JavaScript -->
+                        </select>
+                    </div>
+                    <div class="filter-group">
+                        <label for="priceRange" class="form-label">Max Price: ₹<span id="priceRangeValue">1000</span></label>
+                        <input type="range" id="priceRange" min="0" max="1000" value="1000" class="price-range-slider">
+                    </div>
+                </div>
+
+                <!-- Results Grid -->
+                <div class="search-results-grid" id="searchResultsGrid">
+                    <!-- Results will be populated by JavaScript -->
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <!-- Product Detail Modal -->
+    <div class="modal hidden" id="productModal">
+        <div class="modal-overlay"></div>
+        <div class="modal-content modal-lg">
+            <div class="modal-header">
+                <h2 id="productModalTitle">Product Details</h2>
+                <button class="modal-close" id="closeProductModal">&times;</button>
+            </div>
+            <div class="modal-body" id="productModalBody">
+                <!-- Product details populated by JavaScript -->
+            </div>
+        </div>
+    </div>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="container">
+            <div class="footer-content">
+                <div class="footer-section">
+                    <h4>QMVP</h4>
+                    <p>Compare prices across all major quick commerce platforms in India. Save time and money on your grocery shopping.</p>
+                </div>
+                <div class="footer-section">
+                    <h4>Platforms</h4>
+                    <ul>
+                        <li>Zepto</li>
+                        <li>Blinkit</li>
+                        <li>Swiggy Instamart</li>
+                        <li>BigBasket</li>
+                        <li>JioMart</li>
+                        <li>Flipkart Minutes</li>
+                    </ul>
+                </div>
+                <div class="footer-section">
+                    <h4>Categories</h4>
+                    <ul>
+                        <li>Fresh Produce</li>
+                        <li>Dairy & Eggs</li>
+                        <li>Pantry Staples</li>
+                        <li>Personal Care</li>
+                    </ul>
+                </div>
+                <div class="footer-section">
+                    <h4>About</h4>
+                    <ul>
+                        <li><a href="#" target="_blank">How it Works</a></li>
+                        <li><a href="#" target="_blank">Privacy Policy</a></li>
+                        <li><a href="#" target="_blank">Terms of Service</a></li>
+                        <li><a href="#" target="_blank">Contact Us</a></li>
+                    </ul>
+                </div>
+            </div>
+            <div class="footer-bottom">
+                <p>&copy; 2025 QMVP. Made for educational purposes only.</p>
+            </div>
+        </div>
+    </footer>
+
+    <script src="app.js"></script>
+</body>
+</html>
